@@ -1,14 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "co.edu.uniandes.vinilos"
+    namespace = "co.edu.uniandes.vinilotunes"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "co.edu.uniandes.vinilos"
+        applicationId = "co.edu.uniandes.vinilotunes"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -36,6 +37,7 @@ android {
     buildToolsVersion = "34.0.0"
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -50,7 +52,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.databinding:databinding-runtime:8.1.2")
+    implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:5.0.0-rc01")
 }

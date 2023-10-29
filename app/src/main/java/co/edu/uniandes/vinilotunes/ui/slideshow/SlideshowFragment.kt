@@ -1,4 +1,4 @@
-package co.edu.uniandes.vinilos.ui.slideshow
+package co.edu.uniandes.vinilotunes.ui.slideshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import co.edu.uniandes.vinilos.databinding.FragmentSlideshowBinding
+import co.edu.uniandes.vinilotunes.databinding.FragmentSlideshowBinding
 
 class SlideshowFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package co.edu.uniandes.vinilos
+package co.edu.uniandes.vinilotunes
 
 import org.junit.Test
 

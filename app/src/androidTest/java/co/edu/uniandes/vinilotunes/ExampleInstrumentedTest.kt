@@ -1,4 +1,4 @@
-package co.edu.uniandes.vinilos
+package co.edu.uniandes.vinilotunes
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
