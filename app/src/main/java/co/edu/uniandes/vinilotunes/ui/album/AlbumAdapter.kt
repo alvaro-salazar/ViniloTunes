@@ -37,7 +37,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
      * @param position La posición del álbum que va a ser seleccionado.
      */
     fun onClickAlbum(position: Int) {
-        Log.d("Depuración", "Clic en el botón$position")
+        Log.d("AlbumAdapter", "AlbumAdapter: Clic en el album $position")
         onAlbumSelected?.invoke(albumList[position].id!!) // Esta linea se encarga de invocar un album cuando se selecciona en la lista de álbumes.
     }
 

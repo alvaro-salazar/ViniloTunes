@@ -1,6 +1,5 @@
 package co.edu.uniandes.vinilotunes.ui.album
 
-import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -30,7 +29,12 @@ fun setFormattedDateText(textView: TextView, date: Date?) {
     }
 }
 
-//TODO 2.1: Cambiar comentarios
+/**
+ * BindingAdapter personalizado que carga una imagen en un ImageView desde una URL utilizando Glide.
+ *
+ * @param view El ImageView al que se debe cargar la imagen.
+ * @param url La URL de la imagen que se cargará en el ImageView.
+ */
 @BindingAdapter("app:imageUrl")
 fun setImageByUrl(view: ImageView, url: String?) {
     url?.let {
@@ -41,6 +45,12 @@ fun setImageByUrl(view: ImageView, url: String?) {
     }
 }
 
+/**
+ * BindingAdapter personalizado que muestra la lista de intérpretes en un TextView.
+ *
+ * @param view El TextView en el que se mostrarán los intérpretes.
+ * @param list La lista de intérpretes que se debe mostrar en el TextView.
+ */
 @BindingAdapter("app:performersFromList")
 fun setPerformers(view: TextView, list: List<Performer>?) {
     list?.let { performers ->
@@ -55,7 +65,12 @@ fun setPerformers(view: TextView, list: List<Performer>?) {
     }
 }
 
-
+/**
+ * BindingAdapter personalizado que muestra la lista de canciones en un TextView.
+ *
+ * @param view El TextView en el que se mostrarán las canciones.
+ * @param list La lista de canciones que se debe mostrar en el TextView.
+ */
 @BindingAdapter("app:tracksFromList")
 fun setTracks(view: TextView, list: List<Track>?) {
     list?.let { tracks ->

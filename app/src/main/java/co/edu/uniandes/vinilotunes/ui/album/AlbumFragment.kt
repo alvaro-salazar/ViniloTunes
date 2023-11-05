@@ -1,12 +1,13 @@
 package co.edu.uniandes.vinilotunes.ui.album
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import co.edu.uniandes.vinilotunes.R
 import co.edu.uniandes.vinilotunes.databinding.FragmentAlbumBinding
 
 /**
@@ -18,14 +19,14 @@ class AlbumFragment : Fragment() {
 
     // Esta linea es la encargada de hacer el binding con el ViewModel.
     // Un ViewModel es una clase  que se encarga de manejar la lógica de negocio de la vista.
-    private var _binding: FragmentAlbumBinding? = null // Binding para acceder a los componentes de la vista. Devuelve una vista de álbum o null si no existe.
+    private var _binding: FragmentAlbumBinding? =
+        null // Binding para acceder a los componentes de la vista. Devuelve una vista de álbum o null si no existe.
 
     // Binding para acceder a los componentes de la vista. get es un método que devuelve una vista de álbum o null si no existe.
     private val binding get() = _binding!!
 
     // Esta linea devuelve una instancia del ViewModel de álbum. viewModels() es un método que devuelve una instancia del ViewModel de álbum.
     private val albumViewModel: AlbumViewModel by viewModels()
-
 
 
     /**
@@ -41,7 +42,7 @@ class AlbumFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Infla el diseño de la vista del fragmento desde el archivo fragment_album.xml
         // y lo asigna como la vista de este fragmento.
         _binding = FragmentAlbumBinding.inflate(layoutInflater)
@@ -82,10 +83,12 @@ class AlbumFragment : Fragment() {
     }
 
     private fun goToDetailAlbum(id: Int) {
-        val intent = Intent(binding.root.context, AlbumDetailActivity::class.java).apply {
-            putExtra("ID_ALBUM", id)
-        }
-        startActivity(intent)
+
+        val bundle = Bundle()
+        bundle.putInt("album_id", id) // Aquí debes proporcionar el valor del ID del álbum
+
+        findNavController().navigate(R.id.nav_album_detail, bundle)
+
     }
 
 }
