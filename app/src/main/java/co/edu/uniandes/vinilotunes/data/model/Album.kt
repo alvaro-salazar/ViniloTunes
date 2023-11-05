@@ -1,6 +1,6 @@
 package co.edu.uniandes.vinilotunes.data.model
 
-import java.util.Date
+import java.util.*
 
 /**
  * Clase que representa a un álbum musical.

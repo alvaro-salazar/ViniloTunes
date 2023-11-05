@@ -1,5 +1,6 @@
 package co.edu.uniandes.vinilotunes.data.net
 
+import co.edu.uniandes.vinilotunes.data.model.Album
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -21,6 +22,7 @@ private const val VINILOTUNES_BASE_URL = "http://miso.denkitronik.com:3000"
  * @see [AlbumApi]
  */
 object VinilosApiClient {
+
     /**
      * Objeto que permite la conexión con el servidor de Vinilos.
      * Este objeto es utilizado por Retrofit para generar la implementación de los métodos.
@@ -37,6 +39,6 @@ object VinilosApiClient {
      * Objeto que permite acceder a los métodos de la API de albumes.
      * @see [AlbumApi]
      */
-    public val albums: AlbumApi = apiRetrofit.create(AlbumApi::class.java)
+    val albums: AlbumApi = apiRetrofit.create(AlbumApi::class.java)
 
 }

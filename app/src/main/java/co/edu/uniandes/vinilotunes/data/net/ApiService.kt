@@ -28,5 +28,20 @@ class ApiService {
                 listOf()
         }
 
+        /**
+         * Metodo que permite obtener un álbum por su id.
+         * Este método realiza una solicitud a la API y recopila el álbum con el id especificado.
+         * Si la solicitud es exitosa, se devuelve el álbum, de lo contrario, se devuelve null.
+         * @param id El id del álbum que se desea obtener.
+         * @return [Album? or null] El álbum obtenido de la API.
+         */
+        suspend fun getAlbumById (id: Int): Album? {
+            val request = VinilosApiClient.albums.getAlbumById(id.toString())
+            return if (request.isSuccessful)
+                request.body()
+            else
+                null
+        }
+
     }
 }

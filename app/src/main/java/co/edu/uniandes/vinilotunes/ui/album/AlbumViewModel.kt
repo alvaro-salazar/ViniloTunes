@@ -47,4 +47,14 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
             Log.e("Error", e.message ?: "Failure service")
         }
     }
+
+    fun getAlbumById(id: Int) {
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                album.postValue(albumsRepository.getAlbumById(id))
+            }
+        } catch (e: Exception) {
+            Log.e("Error", e.message ?: "Failure service")
+        }
+    }
 }

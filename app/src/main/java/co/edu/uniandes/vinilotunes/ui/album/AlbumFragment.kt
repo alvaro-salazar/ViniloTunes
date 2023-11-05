@@ -1,5 +1,6 @@
 package co.edu.uniandes.vinilotunes.ui.album
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,7 +38,8 @@ class AlbumFragment : Fragment() {
      * vistas del fragmento.
      */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Infla el diseño de la vista del fragmento desde el archivo fragment_album.xml
@@ -48,14 +50,16 @@ class AlbumFragment : Fragment() {
         val root: View = binding.root
 
         // Crea un adaptador para la lista de álbumes.
-        val adapter = AlbumAdapter()
+        val albumAdapter = AlbumAdapter()
+
+        albumAdapter.onAlbumSelected = this::goToDetailAlbum
 
         // Asigna el adaptador a la lista de álbumes.
-        binding.rvAlbums.adapter = adapter
+        binding.rvAlbums.adapter = albumAdapter
 
         // Observa el evento de selección de un álbum.
         albumViewModel.listAlbums.observe(viewLifecycleOwner) {
-            adapter.albumList = it // Actualiza la lista de álbumes.
+            albumAdapter.albumList = it // Actualiza la lista de álbumes.
         }
 
         return root // Devuelve la vista raíz.
@@ -77,6 +81,11 @@ class AlbumFragment : Fragment() {
         _binding = null
     }
 
-
+    private fun goToDetailAlbum(id: Int) {
+        val intent = Intent(binding.root.context, AlbumDetailActivity::class.java).apply {
+            putExtra("ID_ALBUM", id)
+        }
+        startActivity(intent)
+    }
 
 }

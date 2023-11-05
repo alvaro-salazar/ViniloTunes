@@ -1,6 +1,7 @@
 package co.edu.uniandes.vinilotunes.ui.album
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
      * @param position La posición del álbum que va a ser seleccionado.
      */
     fun onClickAlbum(position: Int) {
+        Log.d("Depuración", "Clic en el botón$position")
         onAlbumSelected?.invoke(albumList[position].id!!) // Esta linea se encarga de invocar un album cuando se selecciona en la lista de álbumes.
     }
 
@@ -82,18 +84,19 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
     class AlbumHolder(view: View): RecyclerView.ViewHolder(view) {
 
         // Este valor representa el enlace de datos de la vista de un ítem.
+        // Los !! se utilizan para indicar que el valor no puede ser nulo.
         private val binding: ItemAlbumLayoutBinding = DataBindingUtil.bind(view)!!
 
         /**
          * Este método se encarga de enlazar los datos de un álbum con la vista de un ítem.
          * @param album El álbum que se va a enlazar con la vista de un ítem.
          * @param position La posición del álbum que se va a enlazar con la vista de un ítem.
-         * @param albumAdapter  El adaptador de álbumes que gestiona la vista.
+         * @param handlerAlbumAdapter  El adaptador de álbumes que gestiona la vista.
          */
-        fun bind(album: Album, position: Int, albumAdapter: AlbumAdapter){
+        fun bind(album: Album, position: Int, handlerAlbumAdapter: AlbumAdapter){
             binding.album = album
             binding.position = position
-            binding.albumAdapter = albumAdapter
+            binding.albumAdapter = handlerAlbumAdapter
 
             // Esta linea se encarga de cargar la imagen del álbum en la vista de un ítem,
             // por medio de album.cover que contiene la URL de la imagen.
